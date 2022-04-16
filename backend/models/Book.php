@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "book".
@@ -20,6 +21,16 @@ use Yii;
 class Book extends \yii\db\ActiveRecord
 {
     /**
+     * Auto set timestamps
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
+    }
+    
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -33,8 +44,8 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['isbn', 'title', 'author', 'location_id', 'created_at', 'updated_at'], 'required'],
-            [['isbn', 'location_id', 'created_at', 'updated_at'], 'integer'],
+            [['isbn', 'title', 'author', 'location_id'], 'required'],
+            [['isbn', 'location_id'], 'integer'],
             [['title', 'author'], 'string', 'max' => 255],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bookshelf::className(), 'targetAttribute' => ['location_id' => 'id']],
         ];
@@ -47,7 +58,7 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'isbn' => 'Isbn',
+            'isbn' => 'ISBN',
             'title' => 'Title',
             'author' => 'Author',
             'location_id' => 'Location ID',
