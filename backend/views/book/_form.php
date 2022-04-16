@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\Bookshelf;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Book */
@@ -18,7 +20,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'location_id')->textInput() ?>
+    <?= $form->field($model, 'location_id')->dropDownList(
+            ArrayHelper::map(Bookshelf::find()->orderBy('location')->all(),'id','location'),
+            ['prompt'=>'Select Bookshelf']
+       )?> 
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
