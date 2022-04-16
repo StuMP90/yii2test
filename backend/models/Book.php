@@ -9,7 +9,7 @@ use yii\behaviors\TimestampBehavior;
  * This is the model class for table "book".
  *
  * @property int $id
- * @property int $isbn
+ * @property string $isbn
  * @property string $title
  * @property string $author
  * @property int $location_id
@@ -45,8 +45,8 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             [['isbn', 'title', 'author', 'location_id'], 'required'],
-            [['isbn', 'location_id'], 'integer'],
-            [['title', 'author'], 'string', 'max' => 255],
+            [['location_id'], 'integer'],
+            [['isbn', 'title', 'author'], 'string', 'max' => 255],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bookshelf::className(), 'targetAttribute' => ['location_id' => 'id']],
         ];
     }
