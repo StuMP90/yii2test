@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'location',
             'slug',
-            'created_at',
-            'updated_at',
+            //'created_at',
+            //'updated_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, backend\models\Bookshelf $model, $key, $index, $column) {
