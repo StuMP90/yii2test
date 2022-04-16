@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "bookshelf".
@@ -25,6 +26,11 @@ class Bookshelf extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::class,
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'location',
+                'slugAttribute' => 'slug',
+            ],
         ];
     }
     
@@ -42,8 +48,8 @@ class Bookshelf extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['location', 'slug'], 'required'],
-            [['location', 'slug'], 'string', 'max' => 255],
+            [['location'], 'required'],
+            [['location'], 'string', 'max' => 255],
             [['location'], 'unique'],
             [['slug'], 'unique'],
         ];
