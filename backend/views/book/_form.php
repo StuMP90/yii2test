@@ -9,7 +9,7 @@ use backend\models\Bookshelf;
 /* @var $model app\models\Book */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<div id="jsflash"></div>
 <div class="book-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -24,7 +24,6 @@ use backend\models\Bookshelf;
             ArrayHelper::map(Bookshelf::find()->orderBy('location')->all(),'id','location'),
             ['prompt'=>'Select Bookshelf']
        )?> 
-
     <div class="form-group">
         <?= Html::button('ISBN Lookup', [ 'class' => 'btn btn-primary', 'onclick' => '(function ( $event ) { checkISBN(); })();' ]) ?>
         &nbsp;
@@ -48,9 +47,9 @@ use backend\models\Bookshelf;
                     key = x;
                     break;
                 }
+                let errors = "";
+                let sucessm = "Lookup OK."
                 if (key !== "") {
-                    let errors = "";
-
                     // Set title in form if we have data
                     if ('title' in data[key]) {
                         var title = data[key]['title'];
@@ -58,7 +57,8 @@ use backend\models\Bookshelf;
                             document.getElementById('book-title').value = title;
                         }
                     } else {
-                       errors += "Title not found. " 
+                       errors += "Title not found. ";
+                       sucessm = "";
                     }
 
                     // Set author in form if we have data
@@ -68,14 +68,20 @@ use backend\models\Bookshelf;
                             document.getElementById('book-author').value = author;
                         }
                     } else {
-                       errors += "Author not found. " 
-                    }
-
-                    if (errors !== "") {
-                        alert(errors);
+                       errors += "Author not found. ";
+                       sucessm = "";
                     }
                 } else {
-                    alert('ISBN required. ');
+                    errors += "ISBN required or not found. ";
+                    sucessm = "";
+                }
+                if (errors !== "") {
+                    var msg_div = document.getElementById('jsflash');
+                    msg_div.innerHTML = '<div class="alert alert-danger alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>Error</h4><p>'+errors+'</p></div>';
+                }
+                if (sucessm !== "") {
+                    var msg_div = document.getElementById('jsflash');
+                    msg_div.innerHTML = '<div class="alert alert-success alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>OK</h4><p>'+sucessm+'</p></div>';
                 }
             });
         }
