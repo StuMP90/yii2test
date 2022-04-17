@@ -39,7 +39,7 @@ use backend\models\Bookshelf;
             //'https://openlibrary.org/api/books?bibkeys=ISBN:0553408828&jscmd=data&format=json'
             //'https://openlibrary.org/api/books?bibkeys=ISBN:0553408828&jscmd=data'
             //'https://openlibrary.org/api/books?bibkeys=ISBN:0553408828&callback=processBooks'
-            $.getJSON('https://openlibrary.org/api/books?bibkeys=ISBN:'+isbn_field.value+'&jscmd=data&format=json', function(data) {
+            $.getJSON('https://openlibrary.org/api/books?bibkeys=ISBN:'+encodeURIComponent(isbn_field.value)+'&jscmd=data&format=json', function(data) {
                 // JSON result in `data` variable
                 // Get top level key (string including ISBN)
                 let key = "";
@@ -48,7 +48,7 @@ use backend\models\Bookshelf;
                     break;
                 }
                 let errors = "";
-                let sucessm = "Lookup OK."
+                let sucessm = "ISBN Found.";
                 if (key !== "") {
                     // Set title in form if we have data
                     if ('title' in data[key]) {
@@ -81,7 +81,7 @@ use backend\models\Bookshelf;
                 }
                 if (sucessm !== "") {
                     var msg_div = document.getElementById('jsflash');
-                    msg_div.innerHTML = '<div class="alert alert-success alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>OK</h4><p>'+sucessm+'</p></div>';
+                    msg_div.innerHTML = '<div class="alert alert-success alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>Lookup OK</h4><p>'+sucessm+'</p></div>';
                 }
             });
         }
