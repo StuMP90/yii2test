@@ -36,10 +36,15 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/']],
-        ['label' => 'Bookshelves', 'url' => ['/bookshelf']],
-        ['label' => 'Books', 'url' => ['/book']],
-        ['label' => 'Gii', 'url' => ['/gii']],
     ];
+    // Only show menu to logged in users
+    if (!(Yii::$app->user->isGuest)) {
+        $menuItems = [
+            ['label' => 'Bookshelves', 'url' => ['/bookshelf']],
+            ['label' => 'Books', 'url' => ['/book']],
+            ['label' => 'Gii', 'url' => ['/gii']],
+        ];
+    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {

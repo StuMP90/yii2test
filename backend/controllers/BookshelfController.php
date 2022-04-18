@@ -27,7 +27,7 @@ class BookshelfController extends Controller
                     'rules' => [
                         [
                             'allow' => true,
-                            'roles' => ['@'],
+                            'roles' => ['manageShelves'],
                         ],
                     ],
                 ],
