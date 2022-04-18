@@ -43,6 +43,10 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionCreatewidget(){
+        return $this->render('adminmenuwidget');
+    }
+    
     /**
      * {@inheritdoc}
      */
