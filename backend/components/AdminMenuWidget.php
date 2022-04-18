@@ -6,6 +6,7 @@ use yii\base\Widget;
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use backend\models\Menu;
 
 class AdminMenuWidget extends Widget{
     public $output;
@@ -13,23 +14,30 @@ class AdminMenuWidget extends Widget{
     public function init(){
         parent::init();
 
-        $menuItems = [
-            ['label' => 'Home', 'url' => ['/']],
-        ];
+        // Get menu items from model
+        $menulist = Menu::find()->orderBy('order')->all();
         
-        // Only show menu to authorised users
-        if (Yii::$app->user->can('manageShelves')) {
-            $menuItems[] = ['label' => 'Bookshelves', 'url' => ['/bookshelf']];
-        }
-        
-        // Only show menu to authorised users
-        if (Yii::$app->user->can('manageBooks')) {
-            $menuItems[] = ['label' => 'Books', 'url' => ['/book']];
-        }
-        
-        // Only show Gii to logged in users
-        if (!(Yii::$app->user->isGuest)) {
-            $menuItems[] = ['label' => 'Gii', 'url' => ['/gii']];
+        // Loop through menu items
+        foreach ($menulist as $item) {
+            // Check if a permission check is required
+            if ((isset($item->permission)) && ($item->permission !== "")) {
+                if ($item->permission == "LOGGEDIN") {  // Special case, require user to be logged in
+                    if (!(Yii::$app->user->isGuest)) {
+                        $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
+                    }
+                } elseif ($item->permission == "GUEST") {  // Special case, require user to be guest
+                    if (Yii::$app->user->isGuest) {
+                        $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
+                    }
+                } else {
+                    // Check for permission
+                    if (Yii::$app->user->can($item->permission)) {
+                        $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
+                    }
+                }
+            } else {    // No check needed so add menu item
+                $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
+            }
         }
         
         if (Yii::$app->user->isGuest) {
