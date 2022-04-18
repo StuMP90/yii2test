@@ -30,6 +30,7 @@ class Bookshelf extends \yii\db\ActiveRecord
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'location',
                 'slugAttribute' => 'slug',
+                'ensureUnique' => true,
             ],
         ];
     }
