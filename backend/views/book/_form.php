@@ -77,11 +77,11 @@ use backend\models\Bookshelf;
                 }
                 if (errors !== "") {
                     var msg_div = document.getElementById('jsflash');
-                    msg_div.innerHTML = '<div class="alert alert-danger alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>Error</h4><p>'+errors+'</p></div>';
+                    msg_div.innerHTML = '<div class="alert alert-danger alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><p>'+errors+'</p></div>';
                 }
                 if (sucessm !== "") {
                     var msg_div = document.getElementById('jsflash');
-                    msg_div.innerHTML = '<div class="alert alert-success alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><h4><i class="icon fa fa-check"></i>Lookup OK</h4><p>'+sucessm+'</p></div>';
+                    msg_div.innerHTML = '<div class="alert alert-success alert-dismissable"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><p>'+sucessm+'</p></div>';
                 }
             });
         }
