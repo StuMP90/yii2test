@@ -29,11 +29,8 @@ class AdminMenuWidget extends Widget{
                     if (Yii::$app->user->isGuest) {
                         $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
                     }
-                } else {
-                    // Check for permission
-                    if (Yii::$app->user->can($item->permission)) {
-                        $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
-                    }
+                } elseif (Yii::$app->user->can($item->permission)) {  // Check for permission
+                    $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
                 }
             } else {    // No check needed so add menu item
                 $menuItems[] = ['label' => Html::encode($item->label), 'url' => [Html::encode($item->url)]];
