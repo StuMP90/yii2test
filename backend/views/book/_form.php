@@ -23,7 +23,7 @@ use backend\models\Bookshelf;
     <?= $form->field($model, 'location_id')->dropDownList(
             ArrayHelper::map(Bookshelf::find()->orderBy('location')->all(),'id','location'),
             ['prompt'=>'Select Bookshelf']
-       )?> 
+       )?>
     <div class="form-group">
         <?= Html::button('ISBN Lookup', [ 'class' => 'btn btn-primary', 'onclick' => '(function ( $event ) { checkISBN(); })();' ]) ?>
         &nbsp;
