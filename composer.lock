@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89b82cd277972d47224523a82294fc6b",
+    "content-hash": "a8f5df5eb31fa403a4502d18396511fe",
     "packages": [
+        {
+            "name": "abeautifulsite/simpleimage",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/claviska/SimpleImage.git",
+                "reference": "54a99d302355d22ee00d9842a8dbe101a52203d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/claviska/SimpleImage/zipball/54a99d302355d22ee00d9842a8dbe101a52203d8",
+                "reference": "54a99d302355d22ee00d9842a8dbe101a52203d8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "abeautifulsite": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nazar Mokrynskyi",
+                    "email": "nazar@mokrynskyi.com",
+                    "homepage": "http://cleverstyle.org/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Cory LaViska",
+                    "homepage": "http://www.abeautifulsite.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP class that simplifies working with images",
+            "support": {
+                "issues": "https://github.com/claviska/SimpleImage/issues",
+                "source": "https://github.com/claviska/SimpleImage/tree/master"
+            },
+            "time": "2017-01-06T16:38:10+00:00"
+        },
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
@@ -339,6 +392,111 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
             "time": "2021-12-25T01:21:49+00:00"
+        },
+        {
+            "name": "jodit/application",
+            "version": "2.0.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xdan/jodit-connector-application.git",
+                "reference": "f9e98a6151e69932c06a7501d745af287a66af6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xdan/jodit-connector-application/zipball/f9e98a6151e69932c06a7501d745af287a66af6d",
+                "reference": "f9e98a6151e69932c06a7501d745af287a66af6d",
+                "shasum": ""
+            },
+            "require": {
+                "abeautifulsite/simpleimage": "^2.6",
+                "ext-curl": ">=6.0.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jodit\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chupurnov Valeriy",
+                    "email": "chupurnov@gmail.com"
+                }
+            ],
+            "description": "Jodit FileBrowser and Uploader connector",
+            "support": {
+                "issues": "https://github.com/xdan/jodit-connector-application/issues",
+                "source": "https://github.com/xdan/jodit-connector-application/tree/2.0.22"
+            },
+            "time": "2019-07-03T20:00:35+00:00"
+        },
+        {
+            "name": "jodit/yii2-jodit",
+            "version": "1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jodit/yii2-jodit.git",
+                "reference": "592e8145ecd772c74d465c05246a34f1080364f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jodit/yii2-jodit/zipball/592e8145ecd772c74d465c05246a34f1080364f4",
+                "reference": "592e8145ecd772c74d465c05246a34f1080364f4",
+                "shasum": ""
+            },
+            "require": {
+                "jodit/application": "^2.0.11",
+                "xdan/jodit": "^3.1.0",
+                "yiisoft/yii2": "^2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2jodit\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chupurnov Valeriy",
+                    "email": "chupurnov@gmail.com"
+                }
+            ],
+            "description": "Jodit - awesome WYSIWYG Editor like widget for Yii2",
+            "keywords": [
+                "editor",
+                "extension",
+                "html",
+                "html editor",
+                "javascript",
+                "jodit",
+                "rich",
+                "rich editor",
+                "rich text editor",
+                "text",
+                "wysiwyg",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/jodit/yii2-jodit/issues",
+                "source": "https://github.com/jodit/yii2-jodit/tree/1.1.8"
+            },
+            "time": "2018-02-26T08:49:48+00:00"
         },
         {
             "name": "mdmsoft/yii2-admin",
@@ -952,6 +1110,38 @@
                 }
             ],
             "time": "2021-05-27T09:17:38+00:00"
+        },
+        {
+            "name": "xdan/jodit",
+            "version": "3.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xdan/jodit.git",
+                "reference": "669d31e8256dbc40891f0cf330ea3e6272212082"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xdan/jodit/zipball/669d31e8256dbc40891f0cf330ea3e6272212082",
+                "reference": "669d31e8256dbc40891f0cf330ea3e6272212082",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chupurnov Valeriy",
+                    "email": "chupurnov@gmail.com"
+                }
+            ],
+            "description": "Awesome WYSIWYG editor and FileBrowser",
+            "support": {
+                "issues": "https://github.com/xdan/jodit/issues",
+                "source": "https://github.com/xdan/jodit/tree/3.17.1"
+            },
+            "time": "2022-04-12T00:29:27+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -5494,5 +5684,5 @@
         "php": ">=5.6.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

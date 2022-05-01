@@ -19,6 +19,13 @@ use backend\models\Bookshelf;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'notes')->widget(\yii2jodit\JoditWidget::className(), [
+	'settings' => [
+
+	],
+    ]);; 
+    ?>
 
     <?= $form->field($model, 'location_id')->dropDownList(
             ArrayHelper::map(Bookshelf::find()->orderBy('location')->all(),'id','location'),

@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $location_id
  * @property int $created_at
  * @property int $updated_at
+ * @property text $notes
  *
  * @property Bookshelf $location
  */
@@ -47,6 +48,7 @@ class Book extends \yii\db\ActiveRecord
             [['isbn', 'title', 'author', 'location_id'], 'required'],
             [['location_id'], 'integer'],
             [['isbn', 'title', 'author'], 'string', 'max' => 255],
+            [['notes'], 'safe'],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bookshelf::className(), 'targetAttribute' => ['location_id' => 'id']],
         ];
     }
@@ -61,6 +63,7 @@ class Book extends \yii\db\ActiveRecord
             'isbn' => 'ISBN',
             'title' => 'Title',
             'author' => 'Author',
+            'notes' => 'Notes',
             'location_id' => 'Location ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
