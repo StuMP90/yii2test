@@ -10,14 +10,4 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
     ],
-    'modules' => [
-        'jodit' => [
-            'class' => 'yii2jodit\JoditModule',
-            'extensions'=>['jpg','png','gif'],
-            'root'=> $_SERVER['DOCUMENT_ROOT'] . '/web/uploads/',
-            'baseurl'=> '@web/uploads/',
-            'maxFileSize'=> '20mb',
-            'defaultPermission'=> 0775,
-        ],
-    ],
 ];

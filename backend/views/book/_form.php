@@ -20,12 +20,22 @@ use backend\models\Bookshelf;
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'notes')->widget(\yii2jodit\JoditWidget::className(), [
-	'settings' => [
-
-	],
-    ]);; 
-    ?>
+    <?= $form->field($model, 'notes')->widget(\yii\redactor\widgets\Redactor::className(), [
+        'clientOptions' => [
+            'lang' => 'en',
+            'imageManagerJson' => ['/redactor/upload/image-json'],
+            'imageUpload' => ['/redactor/upload/image'],
+            'fileManagerJson' => ['/redactor/upload/file-json'],
+            'fileUpload' => ['/redactor/upload/file'],
+            'lang' => 'en_gb',
+            'pastePlainText' => false,
+            'removePastedImages' => true,
+            'removePastedImagesMessage' => "",
+            'plugins' => ['fontcolor','imagemanager','filemanager','clipboardPaste'],
+            'clipboardUploadUrl' => ['/redactor/upload/image-clip'],
+            'clipboardUpload' => true,
+        ]
+    ])?>
 
     <?= $form->field($model, 'location_id')->dropDownList(
             ArrayHelper::map(Bookshelf::find()->orderBy('location')->all(),'id','location'),
